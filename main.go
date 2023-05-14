@@ -72,7 +72,7 @@ func isGameLost(board [][]string) bool {
 	return true
 }
 
-// merge duplicates in pairs; from = "start" -> start merging from the start of
+// merge paired duplicates; from = "start" -> start merging from the start of
 // the slice.
 // from = "end" -> start merging from the end of the slice.
 func mergePairDuplicates(arr []string, from string) []string {
@@ -87,6 +87,7 @@ func mergePairDuplicates(arr []string, from string) []string {
 				// deleting the upper element
 				copy(arr[i+1:], arr[i+2:])
 				arr = arr[:len(arr)-1]
+                i++ // move to the next pair immediately
 			}
 		}
 	case "end":
@@ -98,6 +99,7 @@ func mergePairDuplicates(arr []string, from string) []string {
 				// deleting the upper element
 				copy(arr[i+1:], arr[i+2:])
 				arr = arr[:len(arr)-1]
+                i-- // move to the next pair immediately
 			}
 		}
 	}
